@@ -55,6 +55,10 @@ class IP
         if (isset($_SERVER['REMOTE_ADDR'])) {
             $default = $_SERVER['REMOTE_ADDR'];
         }
+        
+        if(isset($_SERVER['HTTP_X_REAL_IP'])) {
+            $default = $_SERVER['HTTP_X_REAL_IP'];
+        }
 
         $ipString = self::getNonProxyIpFromHeader($default, $clientHeaders);
         return IPUtils::sanitizeIp($ipString);
